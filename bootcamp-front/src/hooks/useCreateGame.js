@@ -10,11 +10,6 @@ export default function useCreateGame() {
                 game_name: "game_name",
                 players: ["toto", "tata"],
             }),
-        }).then((response) => {
-            if (!response.ok){
-                throw new Error("Network response was not okay");
-            }
-            return response.json();
         }).then((data) => {
             console.log(data);
         })  

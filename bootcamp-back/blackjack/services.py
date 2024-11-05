@@ -8,7 +8,7 @@ def create_game(game_name: str, players: list[str]):
     return game
 
 def get_players(game_id):
-    game = Game.objects.get(pk=game_id)
+    game = Game.objects.get(id=game_id)
     players = game.players.all()
     return players
 
