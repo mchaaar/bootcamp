@@ -36,6 +36,6 @@ def add(request, add_game: AddGameSchema):
     for player in add_game.players:
         Player.objects.create(
             name=player,
-            game=game.id,
+            game=game,
         )
     return game
