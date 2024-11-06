@@ -18,8 +18,8 @@ export default function PlayerCreation(){
 
     const handleCreateGame = () => {
         createGame(players, gameName)
-            .then(() => {
-                navigate("/blackjack");
+            .then((result) => {
+                navigate("/blackjack", { state: {result} });
             })
             .catch((error) => {
                 console.error("Game creation failed:", error);
