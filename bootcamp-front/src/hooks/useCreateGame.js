@@ -1,5 +1,5 @@
 export default function useCreateGame() {
-    const createGame = () => {
+    const createGame = (players, gameName) => {
         fetch("http://localhost:8000/apiGame/create_game", {
             method: "POST",
             headers: {
@@ -7,8 +7,8 @@ export default function useCreateGame() {
                 "Content-Type": "application-json"
             },
             body: JSON.stringify({
-                game_name: "game_name",
-                players: ["toto", "tata"],
+                game_name: gameName,
+                players: players,
             }),
         }).then((data) => {
             console.log(data);

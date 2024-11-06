@@ -1,7 +1,6 @@
 from ninja import NinjaAPI, ModelSchema, Schema
 from blackjack.models import Game, Player
-from blackjack.services import create_game
-from blackjack.services import get_players
+from blackjack.services import create_game, get_players, change_score
 from typing import List
 
 api = NinjaAPI()
@@ -25,11 +24,17 @@ class GameSchema(ModelSchema):
             "turn",
             "ended",
         ]
-    players: list[PlayerSchema]
+    players: List[PlayerSchema]
 
 class AddGameSchema(Schema):
     game_name: str
-    players: list[str]
+    players: List[str]
+
+class GetPlayersSchema(Schema):
+    id: int
+
+class ScoreUpdateSchema(Schema):
+    score: int
 
 @api.post("/create_game", response=GameSchema)
 def add(request, add_game: AddGameSchema):
@@ -38,3 +43,7 @@ def add(request, add_game: AddGameSchema):
 @api.get("/get_players", response=List[PlayerSchema])
 def get(request, id: int = None):
     return get_players(id)
+
+@api.put("/change_score", response=PlayerSchema)
+def put(request, data: ScoreUpdateSchema, player_id: int = None):
+    return change_score(player_id, data.score)

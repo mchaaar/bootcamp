@@ -1,4 +1,5 @@
 from blackjack.models import Game, Player
+from django.core.exceptions import ObjectDoesNotExist
 
 def create_game(game_name: str, players: list[str]):
     game = Game(name=game_name)
@@ -16,9 +17,13 @@ def get_winners(game_id):
     # should return all winners, closest to 21
     # Can have more than 1 winner
     pass
-    
+
 def change_score(player_id, score):
-    player = Player.objects.get(pk=player_id)
-    player.score = score
-    player.save()
-    pass
+    try:
+        player = Player.objects.get(id=player_id)
+        player.score = score
+        player.save()
+        return player
+    except ObjectDoesNotExist:
+        return None
+ 

@@ -1,11 +1,11 @@
 import useCreateGame from "../hooks/useCreateGame";
+import GameCreation from "../components/GameCreation";
 
 export default function Home(){
-    const { createGame } = useCreateGame()
     return (
         <>
             <h1>Home</h1>
-            <button onClick={() => createGame()}>create game</button>
+            <GameCreation />
         </> 
     )
 }
