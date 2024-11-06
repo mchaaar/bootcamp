@@ -1,4 +1,3 @@
-import useCreateGame from "../hooks/useCreateGame";
 import GameCreation from "../components/GameCreation";
 
 export default function Home(){
