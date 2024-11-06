@@ -7,6 +7,15 @@ export default function Blackjack() {
     const [players, setPlayers] = useState(location.state.result.players);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [diceAmount, setdiceAmount] = useState(1);
+    const [playerThatPlay, setTextPlayerName] = useState("Toto");
+    const [turn, setTurn] = useState(0);
+
+    const changeText = () => {
+        if((turn+1)<=players.length){
+            setTextPlayerName(players[turn].name);
+            setTurn(turn+1)
+        }
+    };
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
@@ -18,6 +27,8 @@ export default function Blackjack() {
     };
 
     return <>
+        <h1 >{playerThatPlay}</h1>
+        <button onClick={changeText}>Finir le tour</button>
         <div className="dropdown">
             <button onClick={toggleDropdown} className="dropbtn">Choix des dés</button>
             {dropdownOpen && (
