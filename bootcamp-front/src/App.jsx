@@ -1,8 +1,7 @@
 import './App.css'
 import { Route, Routes, useNavigate } from 'react-router-dom'
-import Toto from './pages/Toto'
 import Home from './pages/Home'
-import { Link } from 'react-router-dom'
+import Blackjack from './pages/Blackjack'
 
 function App() {
   const navigate = useNavigate();
@@ -14,12 +13,12 @@ function App() {
           <button onClick={() => navigate("/")}>Home</button>
         </li>
         <li>
-          <button onClick={() => navigate("/toto")}>Toto</button>
+          <button onClick={() => navigate("/blackjack")}>Blackjack</button>
         </li>
       </ul>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/toto" element={<Toto />} />
+        <Route path="/blackjack" element={<Blackjack />} />
       </Routes>
     </>
   )

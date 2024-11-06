@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import useCreateGame from "../hooks/useCreateGame";
+import { useNavigate } from "react-router-dom";
 
 export default function PlayerCreation(){
+    const navigate = useNavigate();
     const { createGame } = useCreateGame()
     const [newName, setNewName] = useState('');
     const [gameName, setGameName] = useState('');
@@ -12,6 +14,16 @@ export default function PlayerCreation(){
             setPlayers([...players, newName]);
             setNewName('');
         }
+    };
+
+    const handleCreateGame = () => {
+        createGame(players, gameName)
+            .then(() => {
+                navigate("/blackjack");
+            })
+            .catch((error) => {
+                console.error("Game creation failed:", error);
+            });
     };
 
     return (
@@ -40,7 +52,7 @@ export default function PlayerCreation(){
                     </li>
                 ))}
             </ul>
-            <button onClick={() => createGame(players, gameName)}>create game</button>
+            <button onClick={handleCreateGame}>create game</button>
         </div>
     );
 };
