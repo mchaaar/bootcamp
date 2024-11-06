@@ -2,7 +2,7 @@ import { useState } from 'react';
 import useCreateGame from "../hooks/useCreateGame";
 import { useNavigate } from "react-router-dom";
 
-export default function PlayerCreation(){
+export default function GameCreation(){
     const navigate = useNavigate();
     const { createGame } = useCreateGame()
     const [newName, setNewName] = useState('');
