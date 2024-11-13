@@ -110,11 +110,3 @@ def handle_dice_throw(diceAmount):
             dataGlobal["winners"] = data["winners"]
 
     return dataGlobal
-
-def announce_var(data):
-    global dataGlobal
-
-    data_dict = data.dict()
-    for key, value in data_dict.items():
-        dataGlobal[key] = value
-    return dataGlobal

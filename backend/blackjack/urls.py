@@ -6,7 +6,6 @@ from blackjack.services import get_players
 from blackjack.services import modif_score
 from blackjack.services import get_winners
 from blackjack.services import end_turn
-from blackjack.services import announce_var
 from blackjack.services import handle_dice_throw
 from typing import List, Optional
 
@@ -81,10 +80,6 @@ def put(request, data: ScoreUpdateSchema, player_id: int = None):
 @api.put("/end_turn", response=DataGlobalSchema)
 def put(request):
     return end_turn()
-
-@api.put("/announce_var")
-def put(request, data: DataGlobalSchema):
-    return announce_var(data)
 
 @api.put("/handle_dice_throw", response=DataGlobalSchema)
 def put(request, diceAmount: HandleDiceThrow):
