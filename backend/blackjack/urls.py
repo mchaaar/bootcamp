@@ -1,5 +1,4 @@
 from ninja import NinjaAPI, ModelSchema, Schema
-from django.http import JsonResponse
 from blackjack.models import Game, Player
 from blackjack.services import create_game
 from blackjack.services import get_players
@@ -51,15 +50,15 @@ class EndTurnSchema(Schema):
     player_id: int
     winners: Optional[object] = None
 
+class HandleDiceThrow(Schema):
+    diceAmount: int
+
 class DataGlobalSchema(Schema):
     players: list  
     playerThatPlay: str  
     turn: int  
     score: int
     winners: Optional[object] = None
-
-class HandleDiceThrow(Schema):
-    diceAmount: int
 
 @api.post("/create_game", response=GameSchema)
 def add(request, add_game: AddGameSchema):
@@ -69,18 +68,18 @@ def add(request, add_game: AddGameSchema):
 def get(request, id: int = None):
     return get_players(id)
 
-@api.get("/get_winners", response=List[WinnerSchema])
-def winners(request):
-    return get_winners()
+@api.put("/end_turn", response=DataGlobalSchema)
+def put(request):
+    return end_turn()
 
 @api.put("/modif_score", response=PlayerSchema)
 def put(request, data: ScoreUpdateSchema, player_id: int = None):
     return modif_score(player_id, data.score)
 
-@api.put("/end_turn", response=DataGlobalSchema)
-def put(request):
-    return end_turn()
-
 @api.put("/handle_dice_throw", response=DataGlobalSchema)
 def put(request, diceAmount: HandleDiceThrow):
     return handle_dice_throw(diceAmount)
+
+@api.get("/get_winners", response=List[WinnerSchema])
+def winners(request):
+    return get_winners()
