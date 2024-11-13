@@ -11,7 +11,7 @@ Le frontend interagit avec le backend pour une expérience utilisateur réactive
 - [Aperçu](#aperçu)
 - [Pré-requis](#pré-requis)
 - [Installation](#installation)
-- [Les commandes utiles](#les-commandes-utiles)
+- [A savoir](#a-savoir)
 
 ---
 
@@ -83,6 +83,11 @@ Un user superadmin de test existe en backend et vous pouvez l'utiliser via [cett
 ```yaml
 username: mchar
 password: 123
+```
+
+Vous pouvez également créer le votre avec cette commande:  
+```py
+python manage.py createsuperuser
 ```
 
 ---
