@@ -17,11 +17,12 @@ Le frontend interagit avec le backend pour une expérience utilisateur réactive
 
 ### Aperçu
 Le frontend, bien que simple, est pensé pour être facile d'utilisation et assez épuré.  
-Voici la page de création de la partie:  
+
+#### Voici la page de création de la partie:  
 
 ![aperçu du site](https://github.com/mchaaar/bootcamp/blob/main/github/createGame.png)  
 
-Un autre exemple, la page depuis laquelle on joue:  
+#### Un autre exemple, la page depuis laquelle on joue:  
 
 ![aperçu du site](https://github.com/mchaaar/bootcamp/blob/main/github/playGame.png)  
 
